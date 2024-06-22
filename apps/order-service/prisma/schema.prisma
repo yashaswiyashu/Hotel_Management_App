@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DB_URL")
 }
 
@@ -11,7 +11,7 @@ model User {
   createdAt DateTime @default(now())
   email     String?  @unique
   firstName String?
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   lastName  String?
   password  String
   roles     Json
@@ -21,24 +21,24 @@ model User {
 
 model Customer {
   createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   updatedAt DateTime @updatedAt
 }
 
 model DeliveryPerson {
   createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   updatedAt DateTime @updatedAt
 }
 
 model Admin {
   createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   updatedAt DateTime @updatedAt
 }
 
 model Order {
   createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   updatedAt DateTime @updatedAt
 }
